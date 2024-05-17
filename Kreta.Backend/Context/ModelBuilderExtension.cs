@@ -572,6 +572,46 @@ namespace Kreta.Backend.Context
                 new TeachersTeachInSchoolClass
                 {
                     Id = Guid.NewGuid(),
+                    SchoolClassId = schoolClassId1,
+                    TeacherId = teacherId2,
+                    IsTheHoursInOne = false,
+                    NumberOfHours=3,
+                },
+                new TeachersTeachInSchoolClass
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolClassId = schoolClassId1,
+                    TeacherId = teacherId1,
+                    IsTheHoursInOne = false,
+                    NumberOfHours=2,
+                },
+                new TeachersTeachInSchoolClass
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolClassId = schoolClassId1,
+                    TeacherId = teacherId4,
+                    IsTheHoursInOne = false,
+                    NumberOfHours=4,
+                },
+                new TeachersTeachInSchoolClass
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolClassId = schoolClassId2,
+                    TeacherId = teacherId1,
+                    IsTheHoursInOne = false,
+                    NumberOfHours=1,
+                },
+                new TeachersTeachInSchoolClass
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolClassId = schoolClassId2,
+                    TeacherId = teacherId3,
+                    IsTheHoursInOne = false,
+                    NumberOfHours=5,
+                },
+                new TeachersTeachInSchoolClass
+                {
+                    Id = Guid.NewGuid(),
                     SchoolClassId = schoolClassId2,
                     TeacherId = teacherId5,
                     IsTheHoursInOne = false,
@@ -580,17 +620,25 @@ namespace Kreta.Backend.Context
                 new TeachersTeachInSchoolClass
                 {
                     Id = Guid.NewGuid(),
-                    SchoolClassId = schoolClassId1,
-                    TeacherId = teacherId5,
+                    SchoolClassId = schoolClassId3,
+                    TeacherId = teacherId2,
                     IsTheHoursInOne = false,
-                    NumberOfHours=2,
+                    NumberOfHours=1,
                 },
                 new TeachersTeachInSchoolClass
                 {
                     Id = Guid.NewGuid(),
-                    SchoolClassId = schoolClassId2,
+                    SchoolClassId = schoolClassId3,
                     TeacherId = teacherId4,
-                    IsTheHoursInOne = true,
+                    IsTheHoursInOne = false,
+                    NumberOfHours=5,
+                },
+                new TeachersTeachInSchoolClass
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolClassId = schoolClassId3,
+                    TeacherId = teacherId5,
+                    IsTheHoursInOne = false,
                     NumberOfHours=3,
                 },
 

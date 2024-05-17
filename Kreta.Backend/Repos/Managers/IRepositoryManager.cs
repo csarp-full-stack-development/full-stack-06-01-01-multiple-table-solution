@@ -16,5 +16,6 @@ namespace Kreta.Backend.Repos.Managers
         public ISubjectTypeRepo? SubjectTypeRepo { get; }
         public ITeacherRepo? TeacherRepo { get; }
         public ITypeOfEducationRepo? TypeOfEducationRepo { get; }
+        public ITeacherTeachInSchoolClass? TeacherTeachInSchoolClassRepo { get; }
     }
 }

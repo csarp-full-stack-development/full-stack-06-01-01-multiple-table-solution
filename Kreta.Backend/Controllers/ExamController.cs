@@ -24,9 +24,12 @@ namespace Kreta.Backend.Controllers
                 return BadRequest();
             else
             {
-                List<NameBirthDay>? result = await _examService.GetParantsOfStudent(fullNameParameter).ToListAsync();
-                if (result is not null)
+                IQueryable<NameBirthDay>? query = _examService.GetParantsOfStudent(fullNameParameter);
+                if (query is not null)
+                {
+                    List<NameBirthDay> result = await query.ToListAsync();
                     return Ok(result);
+                }
                 else
                     return BadRequest();
             }
@@ -42,6 +45,42 @@ namespace Kreta.Backend.Controllers
                 string? result = _examService.GetCityOfTeacher(fullNameParameter);
                 if (result is not null)
                     return Ok(result);
+                else
+                    return BadRequest();
+            }
+        }
+
+        [HttpPost("SchoolClassStudentName")]
+        public async Task<IActionResult> GetSchoolClassStudentName([FromBody] SchoolClassYearTypeParameter schoolClassParameter)
+        {
+            if (_examService is null)
+                return BadRequest();
+            else
+            {
+                IQueryable<NameBirthDay>? query = _examService.GetSchoolClassStudentNameBirthDay(schoolClassParameter.SchoolYear, schoolClassParameter.SchoolClassType);
+                if (query is not null)
+                {
+                    List<NameBirthDay> result = await query.ToListAsync();
+                    return Ok(result);
+                }
+                else
+                    return BadRequest();
+            }
+        }
+
+        [HttpPost("SchoolClassTeacherNameBirthDay")]
+        public async Task<IActionResult> GetSchoolClassTeacherNameBirthDay([FromBody] SchoolClassYearTypeParameter schoolClassParameter)
+        {
+            if (_examService is null)
+                return BadRequest();
+            else
+            {
+                IQueryable<NameBirthDay>? query = _examService.GetSchoolClassTeacherNameBirthDay(schoolClassParameter.SchoolYear, schoolClassParameter.SchoolClassType);
+                if (query is not null)
+                {
+                    List<NameBirthDay> result = await query.ToListAsync();
+                    return Ok(result);
+                }
                 else
                     return BadRequest();
             }

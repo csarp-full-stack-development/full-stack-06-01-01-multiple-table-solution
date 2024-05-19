@@ -9,5 +9,7 @@ namespace Kreta.Backend.Services
         public string? GetCityOfTeacher(FullNameParameter fullNameParameter);
         public IQueryable<NameBirthDay>? GetSchoolClassStudentNameBirthDay(int schoolYear, SchoolClassType schoolClassType);
         public IQueryable<NameBirthDay>? GetSchoolClassTeacherNameBirthDay(int schoolYear, SchoolClassType schoolClassType);
+        public IQueryable<EducationLevelNameBirthDay>? GetWomansEducationLevel();
+        public IQueryable<TypeOfEducationNameBirthDay>? GetTypeOfEducationNames();
     }
 }

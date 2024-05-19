@@ -85,5 +85,42 @@ namespace Kreta.Backend.Controllers
                     return BadRequest();
             }
         }
+
+
+        [HttpGet("WomansEducationLevel")]
+        public async Task<IActionResult> GetWomansEducationLevel()
+        {
+            if (_examService is null)
+                return BadRequest();
+            else
+            {
+                IQueryable<EducationLevelNameBirthDay>? query = _examService.GetWomansEducationLevel();
+                if (query is not null)
+                {
+                    List<EducationLevelNameBirthDay> result = await query.ToListAsync();
+                    return Ok(result);
+                }
+                else
+                    return BadRequest();
+            }
+        }
+
+        [HttpGet("TypeOfEducationNames")]
+        public async Task<IActionResult> GetTypeOfEducationNames()
+        {
+            if (_examService is null)
+                return BadRequest();
+            else
+            {
+                IQueryable<TypeOfEducationNameBirthDay>? query = _examService.GetTypeOfEducationNames();
+                if (query is not null)
+                {
+                    List<TypeOfEducationNameBirthDay> result = await query.ToListAsync();
+                    return Ok(result);
+                }
+                else
+                    return BadRequest();
+            }
+        }
     }
 }

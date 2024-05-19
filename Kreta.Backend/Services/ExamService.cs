@@ -1,4 +1,5 @@
-﻿using Kreta.Backend.Repos.Managers;
+﻿using Kreta.Backend.Repos;
+using Kreta.Backend.Repos.Managers;
 using Kreta.Shared.Models;
 using Kreta.Shared.Models.SchoolCitizens;
 using Kreta.Shared.Parameters;
@@ -108,5 +109,60 @@ namespace Kreta.Backend.Services
             }
         }
 
+        // 5.	feladat
+        // Adja meg, hogy a diáklányok milyen tanulmányi szinten tanulnak(EducationLevel)!
+        public IQueryable<EducationLevelNameBirthDay>? GetWomansEducationLevel()
+        {
+            if (_repositoryManager is null
+                || _repositoryManager.StudentRepo is null
+                || _repositoryManager.EducationLevelRepo is null)
+
+            {
+                return null;
+            }
+
+            var query = from student in _repositoryManager.StudentRepo.FindAll()
+                        from educationLevel in _repositoryManager.EducationLevelRepo.FindAll()
+                        where student.EducationLevelId==educationLevel.Id &&  student.IsWoman
+                        select new EducationLevelNameBirthDay
+                        {
+                            EducationLevelName = educationLevel.StudentEducationLevel,
+                            FirstName = student.FirstName,
+                            LastName = student.LastName,
+                            Birthday = student.BirthDay
+                        };
+            return query;
+
+        }
+
+
+        //6.	feladat
+        //Adja meg hogy a fiúk diákok melyik szakmát tanulják(TypeOfEduication)!
+        public IQueryable<TypeOfEducationNameBirthDay>? GetTypeOfEducationNames()
+        {
+            if (_repositoryManager is null
+                || _repositoryManager.StudentRepo is null
+                || _repositoryManager.SchoolClassRepo is null
+                || _repositoryManager.TypeOfEducationRepo is null
+             )
+
+
+            {
+                return null;
+            }
+
+            var query = from student in _repositoryManager.StudentRepo.FindAll()
+                        from schoolClass in _repositoryManager.SchoolClassRepo.FindAll()
+                        from typeOfEducation in _repositoryManager.TypeOfEducationRepo.FindAll()
+                        where student.SchoolClassID==schoolClass.Id && schoolClass.TypeOfEducationId==typeOfEducation.Id && !student.IsWoman
+                        select new TypeOfEducationNameBirthDay
+                        {
+                            TypeOfEducatinName = typeOfEducation.EducationName,
+                            FirstName = student.FirstName,
+                            LastName = student.LastName,
+                            Birthday = student.BirthDay
+                        };
+            return query;
+        }
     }
 }
